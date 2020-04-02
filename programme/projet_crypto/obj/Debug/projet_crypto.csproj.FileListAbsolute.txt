@@ -1,0 +1,11 @@
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\bin\Debug\projet_crypto.exe.config
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\bin\Debug\projet_crypto.exe
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\bin\Debug\projet_crypto.pdb
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\obj\Debug\projet_crypto.exe
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\obj\Debug\projet_crypto.pdb
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\bin\Debug\liste_francais.txt
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\bin\Debug\PourRudySansCle.txt
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\bin\Debug\PA.txt
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\bin\Debug\TestXOR4.txt
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\obj\Debug\projet_crypto.csprojAssemblyReference.cache
+C:\Users\Rudy Krauffel\source\repos\projet_crypto\projet_crypto\bin\Debug\PAernest.txt
