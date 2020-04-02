@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0iera3i" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.0">
+  <bpmn:collaboration id="Collaboration_14rrsmj">
+    <bpmn:participant id="Participant_10n6fys" name="Atelier home-cinéma" processRef="Process_1k411n7" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1k411n7" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Demande d&#39;instalition">
+      <bpmn:outgoing>Flow_1bjdziy</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:dataStoreReference id="Flow_17hzwpr" />
+    <bpmn:endEvent id="Event_0u0b0ef">
+      <bpmn:incoming>Flow_12grk8d</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Activity_0hflqrc" name="Planification d&#39;un date">
+      <bpmn:incoming>Flow_1bjdziy</bpmn:incoming>
+      <bpmn:outgoing>Flow_04ok7nf</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_1bl15uc" name="Déplacement chez le particulier">
+      <bpmn:incoming>Flow_09uj267</bpmn:incoming>
+      <bpmn:outgoing>Flow_0xsbhb8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0qmpean" name="Récupération du matérielle">
+      <bpmn:incoming>Flow_0bp2kme</bpmn:incoming>
+      <bpmn:outgoing>Flow_09uj267</bpmn:outgoing>
+      <bpmn:property id="Property_0a2r3zl" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0bb2wdd">
+        <bpmn:sourceRef>Flow_17hzwpr</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0a2r3zl</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:intermediateCatchEvent id="Event_0ljm09k" name="jour du rendez vous">
+      <bpmn:incoming>Flow_04ok7nf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bp2kme</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0ut5brl" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_1bjdziy" sourceRef="StartEvent_1" targetRef="Activity_0hflqrc" />
+    <bpmn:sequenceFlow id="Flow_09uj267" sourceRef="Activity_0qmpean" targetRef="Activity_1bl15uc" />
+    <bpmn:sequenceFlow id="Flow_0xsbhb8" sourceRef="Activity_1bl15uc" targetRef="Activity_0bzborj" />
+    <bpmn:sequenceFlow id="Flow_06gkk59" sourceRef="Activity_0bzborj" targetRef="Activity_0plvttn" />
+    <bpmn:sequenceFlow id="Flow_12grk8d" sourceRef="Activity_0plvttn" targetRef="Event_0u0b0ef" />
+    <bpmn:sequenceFlow id="Flow_04ok7nf" sourceRef="Activity_0hflqrc" targetRef="Event_0ljm09k" />
+    <bpmn:sequenceFlow id="Flow_0bp2kme" sourceRef="Event_0ljm09k" targetRef="Activity_0qmpean" />
+    <bpmn:userTask id="Activity_0bzborj" name="Instalation du Home cinémat">
+      <bpmn:incoming>Flow_0xsbhb8</bpmn:incoming>
+      <bpmn:outgoing>Flow_06gkk59</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0plvttn" name="Calibrage de l&#39;appareille">
+      <bpmn:incoming>Flow_06gkk59</bpmn:incoming>
+      <bpmn:outgoing>Flow_12grk8d</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:textAnnotation id="TextAnnotation_1cojbp5">
+      <bpmn:text>Stock contenant le matérielle</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1p9k9g5" sourceRef="Flow_17hzwpr" targetRef="TextAnnotation_1cojbp5" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_14rrsmj">
+      <bpmndi:BPMNShape id="Participant_10n6fys_di" bpmnElement="Participant_10n6fys" isHorizontal="true">
+        <dc:Bounds x="160" y="50" width="1228" height="430" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="202" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="212" y="356" width="55" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1bjdziy_di" bpmnElement="Flow_1bjdziy">
+        <di:waypoint x="238" y="310" />
+        <di:waypoint x="270" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Flow_17hzwpr_di" bpmnElement="Flow_17hzwpr">
+        <dc:Bounds x="715" y="195" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="640" y="216" width="80" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataInputAssociation_0bb2wdd_di" bpmnElement="DataInputAssociation_0bb2wdd">
+        <di:waypoint x="726" y="245" />
+        <di:waypoint x="700" y="292" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1cojbp5_di" bpmnElement="TextAnnotation_1cojbp5">
+        <dc:Bounds x="480" y="130" width="100" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1p9k9g5_di" bpmnElement="Association_1p9k9g5">
+        <di:waypoint x="715" y="213" />
+        <di:waypoint x="580" y="173" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09uj267_di" bpmnElement="Flow_09uj267">
+        <di:waypoint x="700" y="310" />
+        <di:waypoint x="770" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xsbhb8_di" bpmnElement="Flow_0xsbhb8">
+        <di:waypoint x="870" y="310" />
+        <di:waypoint x="940" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06gkk59_di" bpmnElement="Flow_06gkk59">
+        <di:waypoint x="1040" y="310" />
+        <di:waypoint x="1090" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0u0b0ef_di" bpmnElement="Event_0u0b0ef">
+        <dc:Bounds x="1252" y="292" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_12grk8d_di" bpmnElement="Flow_12grk8d">
+        <di:waypoint x="1190" y="310" />
+        <di:waypoint x="1252" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04ok7nf_di" bpmnElement="Flow_04ok7nf">
+        <di:waypoint x="370" y="310" />
+        <di:waypoint x="462" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bp2kme_di" bpmnElement="Flow_0bp2kme">
+        <di:waypoint x="498" y="310" />
+        <di:waypoint x="600" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_04qvbmz_di" bpmnElement="Event_0ljm09k">
+        <dc:Bounds x="462" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="445" y="335" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0p1wqri_di" bpmnElement="Activity_0hflqrc">
+        <dc:Bounds x="270" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0gmfbix_di" bpmnElement="Activity_1bl15uc">
+        <dc:Bounds x="770" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15p50my_di" bpmnElement="Activity_0qmpean">
+        <dc:Bounds x="600" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07k2nht_di" bpmnElement="Activity_0bzborj">
+        <dc:Bounds x="940" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vb45un_di" bpmnElement="Activity_0plvttn">
+        <dc:Bounds x="1090" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
