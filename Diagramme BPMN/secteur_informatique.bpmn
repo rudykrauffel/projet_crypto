@@ -47,10 +47,10 @@
         <bpmn:incoming>Flow_0ov507b</bpmn:incoming>
         <bpmn:outgoing>Flow_17d7wof</bpmn:outgoing>
       </bpmn:userTask>
-      <bpmn:manualTask id="Activity_1k7uqli" name="Evaluation des coup de maintient">
+      <bpmn:userTask id="Activity_1k7uqli" name="Evaluation des coup de maintient">
         <bpmn:incoming>Flow_02knkcz</bpmn:incoming>
         <bpmn:outgoing>Flow_0oz7yvk</bpmn:outgoing>
-      </bpmn:manualTask>
+      </bpmn:userTask>
       <bpmn:textAnnotation id="TextAnnotation_1cmhqds">
         <bpmn:text>demande  de mise en place d'application</bpmn:text>
       </bpmn:textAnnotation>
@@ -98,7 +98,7 @@
         <bpmn:incoming>Flow_1r2lupg</bpmn:incoming>
         <bpmn:outgoing>Flow_1r58k7j</bpmn:outgoing>
       </bpmn:scriptTask>
-      <bpmn:userTask id="Activity_0tq3yg6" name="test de la solution">
+      <bpmn:userTask id="Activity_0tq3yg6" name="Test de la solution">
         <bpmn:incoming>Flow_1r58k7j</bpmn:incoming>
         <bpmn:outgoing>Flow_0u4p0aw</bpmn:outgoing>
       </bpmn:userTask>
@@ -373,9 +373,6 @@
       <bpmndi:BPMNShape id="Activity_1210r1t_di" bpmnElement="Activity_0nxw1wk">
         <dc:Bounds x="1530" y="607" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_14zj34v_di" bpmnElement="Activity_1k7uqli">
-        <dc:Bounds x="1530" y="740" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1d707if_di" bpmnElement="Activity_1v2gc4u">
         <dc:Bounds x="400" y="650" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -390,6 +387,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1y86thx_di" bpmnElement="Activity_02nixx6">
         <dc:Bounds x="1040" y="650" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ld56vb_di" bpmnElement="Activity_1k7uqli">
+        <dc:Bounds x="1530" y="740" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_14b4srt" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" id="Definitions_14b4srt" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.0">
   <bpmn:collaboration id="Collaboration_1sx8d0d">
     <bpmn:participant id="Participant_0j9xpy4" name="Service Réapprovisionnement" processRef="Process_0umqoyi" />
     <bpmn:participant id="Participant_04sw3z2" name="service achat" processRef="Process_1uch9m3" />
@@ -18,24 +18,6 @@
       <bpmn:outgoing>Flow_10x703a</bpmn:outgoing>
       <bpmn:outgoing>Flow_1do355f</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:task id="Activity_16nhazv" name="Consultation des commandes et stock magazin">
-      <bpmn:incoming>Flow_10x703a</bpmn:incoming>
-      <bpmn:outgoing>Flow_1e2mb23</bpmn:outgoing>
-      <bpmn:property id="Property_1mielnc" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_1awz9r7">
-        <bpmn:sourceRef>Flow_17fxu4o</bpmn:sourceRef>
-        <bpmn:targetRef>Property_1mielnc</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
-    </bpmn:task>
-    <bpmn:task id="Activity_0gbebuw" name="consultation des stocks reserve">
-      <bpmn:incoming>Flow_1do355f</bpmn:incoming>
-      <bpmn:outgoing>Flow_0ttlmb9</bpmn:outgoing>
-      <bpmn:property id="Property_1tjvncg" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_1xf815o">
-        <bpmn:sourceRef>Flow_13p0ba6</bpmn:sourceRef>
-        <bpmn:targetRef>Property_1tjvncg</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
-    </bpmn:task>
     <bpmn:startEvent id="Event_1x0x1ha">
       <bpmn:outgoing>Flow_12vpzbj</bpmn:outgoing>
     </bpmn:startEvent>
@@ -49,19 +31,9 @@
       <bpmn:incoming>Flow_0vp0z02</bpmn:incoming>
       <bpmn:outgoing>Flow_0e3nbtm</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Activity_0z9sg9p" name="Préparation des bon de livraison magazin">
-      <bpmn:incoming>Flow_0lsy976</bpmn:incoming>
-    </bpmn:task>
     <bpmn:endEvent id="Event_1qworj0">
       <bpmn:incoming>Flow_0e3nbtm</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Activity_152i522" name="Analyse des études prédictive">
-      <bpmn:incoming>Flow_0j2ntc3</bpmn:incoming>
-      <bpmn:outgoing>Flow_1nvq8pf</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Activity_18xhaq9" name="Préparation de la demande d&#39;achat">
-      <bpmn:incoming>Flow_087ntnu</bpmn:incoming>
-    </bpmn:task>
     <bpmn:inclusiveGateway id="Gateway_19efkva">
       <bpmn:incoming>Flow_1nvq8pf</bpmn:incoming>
       <bpmn:outgoing>Flow_01oh50f</bpmn:outgoing>
@@ -72,13 +44,6 @@
       <bpmn:outgoing>Flow_087ntnu</bpmn:outgoing>
       <bpmn:outgoing>Flow_059a4er</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Activity_1fwsvpb" name="Réalisation d&#39;étude predictive">
-      <bpmn:incoming>Flow_0dbdbo9</bpmn:incoming>
-      <bpmn:outgoing>Flow_0j2ntc3</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_0db9cd1">
-        <bpmn:targetRef>Flow_1slqzdj</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-    </bpmn:task>
     <bpmn:dataObjectReference id="Flow_1slqzdj" name="dashboard" dataObjectRef="Flow_05hmvzz" />
     <bpmn:dataObject id="Flow_05hmvzz" />
     <bpmn:sequenceFlow id="Flow_0e3nbtm" sourceRef="Gateway_1hqo1mi" targetRef="Event_1qworj0" />
@@ -98,6 +63,41 @@
     <bpmn:sequenceFlow id="Flow_12vpzbj" sourceRef="Event_1x0x1ha" targetRef="Gateway_1xuxoue" />
     <bpmn:dataStoreReference id="Flow_17fxu4o" name="ERP des ventes" />
     <bpmn:dataStoreReference id="Flow_13p0ba6" name="stock de gestion et anticipation" />
+    <bpmn:userTask id="Activity_16nhazv" name="Consultation des commandes et stock magazin">
+      <bpmn:incoming>Flow_10x703a</bpmn:incoming>
+      <bpmn:outgoing>Flow_1e2mb23</bpmn:outgoing>
+      <bpmn:property id="Property_0gorn8b" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1awz9r7">
+        <bpmn:sourceRef>Flow_17fxu4o</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0gorn8b</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0gbebuw" name="consultation des stocks reserve">
+      <bpmn:incoming>Flow_1do355f</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ttlmb9</bpmn:outgoing>
+      <bpmn:property id="Property_01hdh71" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1xf815o">
+        <bpmn:sourceRef>Flow_13p0ba6</bpmn:sourceRef>
+        <bpmn:targetRef>Property_01hdh71</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_1fwsvpb" name="Réalisation d&#39;étude predictive">
+      <bpmn:incoming>Flow_0dbdbo9</bpmn:incoming>
+      <bpmn:outgoing>Flow_0j2ntc3</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0db9cd1">
+        <bpmn:targetRef>Flow_1slqzdj</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_152i522" name="Analyse des études prédictive">
+      <bpmn:incoming>Flow_0j2ntc3</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nvq8pf</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sendTask id="Activity_18xhaq9" name="Préparation de la demande d&#39;achat">
+      <bpmn:incoming>Flow_087ntnu</bpmn:incoming>
+    </bpmn:sendTask>
+    <bpmn:sendTask id="Activity_0z9sg9p" name="Préparation des bon de livraison magazin">
+      <bpmn:incoming>Flow_0lsy976</bpmn:incoming>
+    </bpmn:sendTask>
     <bpmn:textAnnotation id="TextAnnotation_0tshdal">
       <bpmn:text>commander ?</bpmn:text>
     </bpmn:textAnnotation>
@@ -119,23 +119,11 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1sx8d0d">
-      <bpmndi:BPMNShape id="Participant_0j9xpy4_di" bpmnElement="Participant_0j9xpy4" isHorizontal="true">
+      <bpmndi:BPMNShape id="Participant_0j9xpy4_di" bpmnElement="Participant_0j9xpy4" isHorizontal="true" bioc:stroke="rgb(67, 160, 71)" bioc:fill="rgb(200, 230, 201)">
         <dc:Bounds x="160" y="220" width="1470" height="530" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1x0x1ha_di" bpmnElement="Event_1x0x1ha">
         <dc:Bounds x="212" y="432" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1fwsvpb_di" bpmnElement="Activity_1fwsvpb">
-        <dc:Bounds x="700" y="400" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_18xhaq9_di" bpmnElement="Activity_18xhaq9">
-        <dc:Bounds x="1150" y="250" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0gbebuw_di" bpmnElement="Activity_0gbebuw">
-        <dc:Bounds x="430" y="490" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_16nhazv_di" bpmnElement="Activity_16nhazv">
-        <dc:Bounds x="430" y="340" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_12vpzbj_di" bpmnElement="Flow_12vpzbj">
         <di:waypoint x="248" y="450" />
@@ -187,7 +175,7 @@
         <di:waypoint x="600" y="530" />
         <di:waypoint x="600" y="465" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Participant_04sw3z2_di" bpmnElement="Participant_04sw3z2" isHorizontal="true">
+      <bpmndi:BPMNShape id="Participant_04sw3z2_di" bpmnElement="Participant_04sw3z2" isHorizontal="true" bioc:stroke="rgb(251, 140, 0)" bioc:fill="rgb(255, 224, 178)">
         <dc:Bounds x="160" y="80" width="1470" height="110" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_087ntnu_di" bpmnElement="Flow_087ntnu">
@@ -241,14 +229,11 @@
         <di:waypoint x="1183" y="518" />
         <di:waypoint x="1100" y="560" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Activity_0z9sg9p_di" bpmnElement="Activity_0z9sg9p">
-        <dc:Bounds x="1150" y="580" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0lsy976_di" bpmnElement="Flow_0lsy976">
         <di:waypoint x="1200" y="535" />
         <di:waypoint x="1200" y="580" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Participant_0afk8qe_di" bpmnElement="Participant_0afk8qe" isHorizontal="true">
+      <bpmndi:BPMNShape id="Participant_0afk8qe_di" bpmnElement="Participant_0afk8qe" isHorizontal="true" bioc:stroke="rgb(251, 140, 0)" bioc:fill="rgb(255, 224, 178)">
         <dc:Bounds x="160" y="780" width="1470" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_02akvjd_di" bpmnElement="Event_00h5w78">
@@ -265,9 +250,6 @@
         <di:waypoint x="1365" y="460" />
         <di:waypoint x="1412" y="460" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Activity_152i522_di" bpmnElement="Activity_152i522">
-        <dc:Bounds x="870" y="400" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1nvq8pf_di" bpmnElement="Flow_1nvq8pf">
         <di:waypoint x="970" y="440" />
         <di:waypoint x="1065" y="440" />
@@ -296,6 +278,24 @@
         <di:waypoint x="743" y="480" />
         <di:waypoint x="731" y="555" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0oqfmgh_di" bpmnElement="Activity_16nhazv">
+        <dc:Bounds x="430" y="340" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0v2p6gw_di" bpmnElement="Activity_0gbebuw">
+        <dc:Bounds x="430" y="490" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1uwa36n_di" bpmnElement="Activity_1fwsvpb">
+        <dc:Bounds x="700" y="400" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1flxzq6_di" bpmnElement="Activity_152i522">
+        <dc:Bounds x="870" y="400" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0nk8m69_di" bpmnElement="Activity_18xhaq9">
+        <dc:Bounds x="1150" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1p7dhe6_di" bpmnElement="Activity_0z9sg9p">
+        <dc:Bounds x="1150" y="580" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

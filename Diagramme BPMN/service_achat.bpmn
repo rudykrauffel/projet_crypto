@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1cgjwg1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" id="Definitions_1cgjwg1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.0">
   <bpmn:collaboration id="Collaboration_1908cqz">
     <bpmn:participant id="Participant_0fyldfd" name="Service achat" processRef="Process_0zyl02h" />
     <bpmn:participant id="Participant_0k2srfk" name="Fournisseur" processRef="Process_0djz74x" />
     <bpmn:participant id="Participant_1onyhn0" name="Service réaprovisionement" processRef="Process_0u4ga2c" />
-    <bpmn:participant id="Participant_0dsvse7" name="Service reception" processRef="Process_18a159p" />
     <bpmn:messageFlow id="MessageFlow_0gchr55" sourceRef="Participant_1onyhn0" targetRef="Event_029rlji" />
     <bpmn:messageFlow id="MessageFlow_1l60qg4" sourceRef="Activity_1fuhnyx" targetRef="Event_01gtxum" />
     <bpmn:messageFlow id="MessageFlow_1x4deq5" sourceRef="Event_0lr96ot" targetRef="Event_165nx2i" />
@@ -18,10 +17,6 @@
       <bpmn:outgoing>Flow_1v9b2oq</bpmn:outgoing>
       <bpmn:outgoing>Flow_1aup8r9</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Activity_15tsy1g" name="edit la commande">
-      <bpmn:incoming>Flow_1v9b2oq</bpmn:incoming>
-      <bpmn:outgoing>Flow_1j3nkb4</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:exclusiveGateway id="Gateway_17hngo8">
       <bpmn:incoming>Flow_1c4yycd</bpmn:incoming>
       <bpmn:incoming>Flow_1j3nkb4</bpmn:incoming>
@@ -31,14 +26,6 @@
       <bpmn:outgoing>Flow_03nypii</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_0p0skjr" />
     </bpmn:startEvent>
-    <bpmn:task id="Activity_1fuhnyx" name="Contacter un fournisseur">
-      <bpmn:incoming>Flow_18gbpx8</bpmn:incoming>
-      <bpmn:incoming>Flow_0qao2ot</bpmn:incoming>
-    </bpmn:task>
-    <bpmn:task id="Activity_0plwm01" name="valider la commande">
-      <bpmn:incoming>Flow_1aup8r9</bpmn:incoming>
-      <bpmn:outgoing>Flow_1c4yycd</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:exclusiveGateway id="Gateway_0r1y76j" name="Oui">
       <bpmn:incoming>Flow_1ujt9a5</bpmn:incoming>
       <bpmn:outgoing>Flow_0qao2ot</bpmn:outgoing>
@@ -52,13 +39,6 @@
       <bpmn:incoming>Flow_1nnjuxi</bpmn:incoming>
       <bpmn:messageEventDefinition id="MessageEventDefinition_19jj6a0" />
     </bpmn:intermediateThrowEvent>
-    <bpmn:task id="Activity_0fkmn8i" name="edit la liste des livraison">
-      <bpmn:incoming>Flow_198juy4</bpmn:incoming>
-      <bpmn:outgoing>Flow_1nnjuxi</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_03lxtkv">
-        <bpmn:targetRef>Flow_0wfs0cg</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-    </bpmn:task>
     <bpmn:intermediateThrowEvent id="Event_062jwr6" name="Réponse">
       <bpmn:incoming>Flow_0l3ypqh</bpmn:incoming>
       <bpmn:messageEventDefinition id="MessageEventDefinition_0sh0d5z" />
@@ -79,6 +59,25 @@
       <bpmn:messageEventDefinition id="MessageEventDefinition_1a5b8cn" />
     </bpmn:intermediateCatchEvent>
     <bpmn:sequenceFlow id="Flow_0l3ypqh" sourceRef="Event_1fh3xa3" targetRef="Event_062jwr6" />
+    <bpmn:userTask id="Activity_0plwm01" name="valider la commande">
+      <bpmn:incoming>Flow_1aup8r9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1c4yycd</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_15tsy1g" name="editer la commande">
+      <bpmn:incoming>Flow_1v9b2oq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1j3nkb4</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_1fuhnyx" name="Contacter un fournisseur">
+      <bpmn:incoming>Flow_18gbpx8</bpmn:incoming>
+      <bpmn:incoming>Flow_0qao2ot</bpmn:incoming>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0fkmn8i" name="editer la liste des livraison">
+      <bpmn:incoming>Flow_198juy4</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nnjuxi</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_03lxtkv">
+        <bpmn:targetRef>Flow_0wfs0cg</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
     <bpmn:textAnnotation id="TextAnnotation_0vpo39y">
       <bpmn:text>Commande valide ?</bpmn:text>
     </bpmn:textAnnotation>
@@ -107,9 +106,9 @@
       <bpmn:outgoing>Flow_1mti386</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1jqzaes" />
     </bpmn:startEvent>
-    <bpmn:task id="Activity_00738wa" name="Envoie">
+    <bpmn:sendTask id="Activity_00738wa" name="Envoie">
       <bpmn:incoming>Flow_1mti386</bpmn:incoming>
-    </bpmn:task>
+    </bpmn:sendTask>
     <bpmn:textAnnotation id="TextAnnotation_15qhvvy">
       <bpmn:text>Réponse du founisseur</bpmn:text>
     </bpmn:textAnnotation>
@@ -120,26 +119,16 @@
       <bpmn:messageEventDefinition id="MessageEventDefinition_1dqdakm" />
     </bpmn:intermediateCatchEvent>
   </bpmn:process>
-  <bpmn:process id="Process_18a159p" isExecutable="false" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1908cqz">
-      <bpmndi:BPMNShape id="Participant_0fyldfd_di" bpmnElement="Participant_0fyldfd" isHorizontal="true">
+      <bpmndi:BPMNShape id="Participant_0fyldfd_di" bpmnElement="Participant_0fyldfd" isHorizontal="true" bioc:stroke="rgb(67, 160, 71)" bioc:fill="rgb(200, 230, 201)">
         <dc:Bounds x="160" y="330" width="1020" height="450" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Participant_0k2srfk_di" bpmnElement="Participant_0k2srfk" isHorizontal="true">
+      <bpmndi:BPMNShape id="Participant_0k2srfk_di" bpmnElement="Participant_0k2srfk" isHorizontal="true" bioc:stroke="rgb(251, 140, 0)" bioc:fill="rgb(255, 224, 178)">
         <dc:Bounds x="160" y="70" width="1020" height="220" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Participant_1onyhn0_di" bpmnElement="Participant_1onyhn0" isHorizontal="true">
+      <bpmndi:BPMNShape id="Participant_1onyhn0_di" bpmnElement="Participant_1onyhn0" isHorizontal="true" bioc:stroke="rgb(251, 140, 0)" bioc:fill="rgb(255, 224, 178)">
         <dc:Bounds x="160" y="800" width="440" height="90" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1fuhnyx_di" bpmnElement="Activity_1fuhnyx">
-        <dc:Bounds x="740" y="460" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0plwm01_di" bpmnElement="Activity_0plwm01">
-        <dc:Bounds x="500" y="501" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_15tsy1g_di" bpmnElement="Activity_15tsy1g">
-        <dc:Bounds x="500" y="640" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="MessageFlow_0gchr55_di" bpmnElement="MessageFlow_0gchr55">
         <di:waypoint x="320" y="800" />
@@ -200,9 +189,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="204" y="670" width="87" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Participant_0dsvse7_di" bpmnElement="Participant_0dsvse7" isHorizontal="true">
-        <dc:Bounds x="670" y="800" width="510" height="90" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_01rue9c_di" bpmnElement="Flow_01rue9c">
         <di:waypoint x="798" y="230" />
@@ -273,9 +259,6 @@
         <di:waypoint x="962" y="678" />
         <di:waypoint x="870" y="670" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Activity_0fkmn8i_di" bpmnElement="Activity_0fkmn8i">
-        <dc:Bounds x="930" y="560" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1nnjuxi_di" bpmnElement="Flow_1nnjuxi">
         <di:waypoint x="980" y="640" />
         <di:waypoint x="980" y="662" />
@@ -306,9 +289,6 @@
       <bpmndi:BPMNShape id="Event_0467e4v_di" bpmnElement="Event_1fh3xa3">
         <dc:Bounds x="302" y="377" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_00738wa_di" bpmnElement="Activity_00738wa">
-        <dc:Bounds x="270" y="180" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1mti386_di" bpmnElement="Flow_1mti386">
         <di:waypoint x="320" y="150" />
         <di:waypoint x="320" y="180" />
@@ -321,6 +301,21 @@
         <di:waypoint x="338" y="395" />
         <di:waypoint x="392" y="395" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1m8qq51_di" bpmnElement="Activity_00738wa">
+        <dc:Bounds x="270" y="180" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09hjl5s_di" bpmnElement="Activity_0plwm01">
+        <dc:Bounds x="500" y="501" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bq4cve_di" bpmnElement="Activity_15tsy1g">
+        <dc:Bounds x="500" y="640" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1btcqsw_di" bpmnElement="Activity_1fuhnyx">
+        <dc:Bounds x="740" y="460" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1k1xd1p_di" bpmnElement="Activity_0fkmn8i">
+        <dc:Bounds x="930" y="560" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
